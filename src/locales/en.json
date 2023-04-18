@@ -24,5 +24,9 @@
   "weather": {
     "wind": "Wind",
     "speed": "m/s"
+  },
+  "warning": {
+    "selected-full": "Selected items is full-filled. Remove item to add.",
+    "favorites-full": "Favorites items is full-filled. Remove item to add."
   }
 }

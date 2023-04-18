@@ -219,7 +219,6 @@ onUnmounted(() => {
 
   &__input {
     width: 100%;
-    max-width: 500px;
     padding: 12px 20px;
     font-size: 22px;
     border: 2px solid #ccc;

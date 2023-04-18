@@ -32,6 +32,13 @@ export default createStore({
       state.selectedCities = state.selectedCities.filter(city => city.id !== id)
     },
     deleteFavoriteCity(state, id) {
+      const res = state.selectedCities.find(city => city.id === id)
+      if (res) {
+        res.isFavorite = false
+        const inx = state.selectedCities.indexOf(res)
+        state.selectedCities[inx] = res
+      }
+
       state.favorites = state.favorites.filter(city => city.id !== id)
     },
   },

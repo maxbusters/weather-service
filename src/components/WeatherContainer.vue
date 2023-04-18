@@ -18,17 +18,11 @@ const weatherByLocation = ref(null)
 function getGeoInfo() {
   if (store.state.weatherByGeoIsSet)
     return
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition)
-  }
-  else {
-    api.getCurrentGeo().then((resp) => {
-      geo.value.lat = resp.data.latitude
-      geo.value.long = resp.data.longitude
-      getWeatherByGeo()
-    })
-  }
+  api.getCurrentGeo().then((resp) => {
+    geo.value.lat = resp.data.latitude
+    geo.value.long = resp.data.longitude
+    getWeatherByGeo()
+  })
 }
 
 function showPosition(position) {
@@ -84,6 +78,7 @@ onMounted(() => {
 
 <template>
   <section class="section__weather">
+    <span v-if="selectedCitiesList.length >= 5" class="error">{{ $t('warning.selected-full') }}</span>
     <div v-for="(city, inx) in selectedCitiesList" :key="city.id" class="section__wrapper">
       <WeatherCard :city="city" :is-favorites-page="false" />
       <WeatherChart :city="city" />
@@ -115,8 +110,19 @@ onMounted(() => {
 }
 
 .divider {
+  display: none;
   margin: 30px 0;
   border-bottom: 2px solid black;
   width: 100%;
+
+  @media (max-width: 1100px) {
+    display: block;
+  }
+
+}
+
+.error {
+  color: red;
+  text-align: center;
 }
 </style>

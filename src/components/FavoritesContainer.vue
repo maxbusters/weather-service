@@ -12,6 +12,7 @@ const favoritesList = computed(() => {
 
 <template>
   <section v-if="favoritesList.length > 0" class="section__weather">
+    <span v-if="favoritesList.length >= 5" class="error">{{ $t('warning.favorites-full') }}</span>
     <div v-for="city of favoritesList " :key="city.id" class="section__wrapper">
       <WeatherCard :city="city" :is-favorites-page="true" />
       <WeatherChart :city="city" />
@@ -42,5 +43,11 @@ const favoritesList = computed(() => {
     -ms-flex-direction: column;
     flex-direction: column;
   }
+
+}
+
+.error {
+  color: red;
+  text-align: center;
 }
 </style>
