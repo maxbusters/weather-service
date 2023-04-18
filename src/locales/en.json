@@ -1,0 +1,28 @@
+{
+  "locale": {
+    "en": "English",
+    "uk": "Ukrainian",
+    "flag_iso": "gb"
+  },
+  "nav": {
+    "main": "Home",
+    "favorites": "Favorites"
+  },
+  "button": {
+    "add_to_favorites": "Add to favorites",
+    "add_to_list": "Add to list"
+  },
+  "main": {
+    "search_form": {
+      "title": "Enter city name and select it from the list",
+      "placeholder": "City name"
+    }
+  },
+  "favorites": {
+    "empty": "Favorites cities not found. Let`s add some cities on Main page."
+  },
+  "weather": {
+    "wind": "Wind",
+    "speed": "m/s"
+  }
+}

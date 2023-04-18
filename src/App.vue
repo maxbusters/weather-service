@@ -1,30 +1,60 @@
+<script setup>
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
+import TheFooter from '@/components/Main/TheFooter.vue'
+import TheHeader from '@/components/Main/TheHeader.vue'
+
+const store = useStore()
+onMounted(() => {
+  store.dispatch('initState')
+})
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <TheHeader />
+  <main class="main__container">
+    <router-view />
+  </main>
+  <TheFooter />
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body {
+  background-color: aliceblue;
+  margin: 0;
 }
 
-nav {
-  padding: 30px;
+.app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.container {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  @media (max-width: 600px) {
+    width: 90%;
   }
+}
+
+.main__container {
+  min-height: 75vh;
 }
 </style>
