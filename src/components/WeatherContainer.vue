@@ -18,11 +18,16 @@ const weatherByLocation = ref(null)
 function getGeoInfo() {
   if (store.state.weatherByGeoIsSet)
     return
-  api.getCurrentGeo().then((resp) => {
-    geo.value.lat = resp.data.latitude
-    geo.value.long = resp.data.longitude
-    getWeatherByGeo()
-  })
+  if (navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(showPosition)
+
+  if (geo.value.lat === '' && geo.value.long === '') {
+    api.getCurrentGeo().then((resp) => {
+      geo.value.lat = resp.data.latitude
+      geo.value.long = resp.data.longitude
+      getWeatherByGeo()
+    })
+  }
 }
 
 function showPosition(position) {
